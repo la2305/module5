@@ -1,3 +1,28 @@
-.mb-1{
+
+.footerTea{
     color: #91b9ae;
+    display: block;text-align: start;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar .navbar-nav .nav-link {
+    margin-right: 35px;
+    padding: 25px 0;
+    color: var(--dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #88b44e;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }

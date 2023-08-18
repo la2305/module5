@@ -1,19 +1,14 @@
 import ReactDOM from "react-dom/client";
 
-const fruits =[
-  "Apple",
-  "Orange",
-  "Banana",
-  "Coconut"
-];
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <div>
-    <h1>List of fruits</h1>
-    <ul>
-      {fruits.map(item =>(
-        <li>{item}</li>
-      ))}
-    </ul>
+
+const tick =()=>{
+  root.render(
+    <div>
+    <h1>Hello,World!</h1>
+    <h2>it is {new Date().toLocaleTimeString}</h2>
   </div>
-)
+  );
+};
+
+setInterval(tick,1000);
