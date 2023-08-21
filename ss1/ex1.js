@@ -54,11 +54,10 @@ console.log(ratingApp);
 
 
 
-let lowRating = courses.filter(element =>element.rating <4);
-let mapLowRating =lowRating.map(element => element.id + "-" +element.title+"-"+element.rating);
-console.log(mapLowRating);
-  
+let lowRating = courses.filter(element =>element.rating <4).map(element => element.id + "-" +element.title+"-"+element.rating);
+console.log(lowRating);
+
 
 // Yêu cầu 3: Sử dụng cú pháp ES6 đã học viết hàm trả về một mảng mới gộp 2 mảng courses và addedCourses
-let arr = [...addedCourses,...courses];
-console.log(arr);
+let arr = (courses,addedCourses) =>[...courses,...addedCourses];
+console.log(arr(courses,addedCourses));
