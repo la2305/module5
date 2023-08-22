@@ -1,39 +1,37 @@
 import React from "react";
 import { Component } from "react";
-class App extends Component{
-  constructor(){
+class App extends Component {
+  constructor() {
     super();
-    this.state ={
-      studentName : "",
-      studentList: ['HaiTT','Trung DP']
-    }
+    this.state = {
+      studentName: "",
+      studentList: ["HaiTT", "Trung D P"],
+    };
   }
-  handleChange = (nameStudent) => {
-    this.setState({
-      studentName: nameStudent
-    })
+
+  addStudent = () => {
+    let content = document.getElementById("content").value;
+      this.setState((element) => ({
+        studentList: [...element.studentList,content]
+      }))
+      document.getElementById('content').value =""
   }
-  addStudent(){
-    this.setState({
-      studentList: [...this.state.studentList,this.state.studentName],
-      studentName: ""
-    })
-  }
-  render(){
-    return(
+
+  render() {
+    return (
       <>
-      <div style={{textAlign:"center"}}>
-      <h1>Todo List</h1>
-      <input value={this.state.studentName} onChange={(nameStudent) => this.handleChange(nameStudent.target.value)}></input>
-      <button onClick={()=> this.addStudent()}>Add</button>
-      <ul>
-          {this.state.studentList.map((element,index) => {
-            return <li key={index}>{element}</li>
-          })}
-      </ul>
-      </div>
+        <div style={{ textAlign: "center" }}>
+          <h1>Todo List</h1>
+          <input type="text" id="content"></input>
+          <button onClick={() => this.addStudent()}>Add</button>
+          <ul>
+            {this.state.studentList.map((element, index) => {
+              return <li key={index}>{element}</li>;
+            })}
+          </ul>
+        </div>
       </>
-    )
+    );
   }
 }
 export default App;
