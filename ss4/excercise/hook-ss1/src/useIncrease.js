@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-const useIncrement = () => {
+const useIncrement = (x) => {
   const [counter, setCounter] = useState(0);
 
-  const increase = (x) => {
-    const newCounter = counter + x;
-    setCounter(newCounter);
+  const increase = () => {
+    setCounter(counter + x);
   };
 
   return [counter, increase];

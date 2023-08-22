@@ -1,9 +1,11 @@
 import './App.css';
-import IncreaseOne from './increareOne';
+import IncreaseOne from './IncreaseOne';
+import IncreaseTwo from './IncreaseTwo';
 function App() {
   return (
     <div>
       <IncreaseOne></IncreaseOne>
+      <IncreaseTwo></IncreaseTwo>
     </div>
   );
 }
