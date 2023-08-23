@@ -4,7 +4,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      studentName: "",
       studentList: ["HaiTT", "Trung D P"],
     };
   }
@@ -12,7 +11,8 @@ class App extends Component {
   addStudent = () => {
     let content = document.getElementById("content").value;
       this.setState((element) => ({
-        studentList: [...element.studentList,content]
+        studentList: [...element.studentList,content],
+        
       }))
       document.getElementById('content').value =""
   }
@@ -22,7 +22,7 @@ class App extends Component {
       <>
         <div style={{ textAlign: "center" }}>
           <h1>Todo List</h1>
-          <input type="text" id="content"></input>
+          <input type="text"  id="content"></input>
           <button onClick={() => this.addStudent()}>Add</button>
           <ul>
             {this.state.studentList.map((element, index) => {

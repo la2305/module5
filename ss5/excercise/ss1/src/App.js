@@ -13,11 +13,12 @@ const ContractForm = () => (
         phone: "",
         message: ""
       }}
-      onSubmit={async values => {
-        if (!Number(values.phone)) {
-          alert("Số điện thoại chỉ được nhập số");
-        } else alert("Thông tin liên hệ chính xác");
-      }}
+      
+      onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(false);
+        console.log(values);
+        alert('Add contact successfully');
+    }}
 
       validationSchema={Yup.object().shape({
         name: Yup.string()
@@ -57,7 +58,7 @@ const ContractForm = () => (
         <label htmlFor="message">Message</label>
         <Field
           id="message"
-          name="message"
+          name="message"  
           type="textarea"
           placeholder="enter location"
         />
