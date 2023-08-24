@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import * as TodoService from "../services/TodoService";
 import "bootstrap/dist/css/bootstrap.css";
 import {Field,Form, Formik } from "formik";
-import {Link} from 'react-router-dom';
 
 export function TodoList() {
   const [todos, setTodo] = useState([]);
@@ -38,7 +37,7 @@ export function TodoList() {
         <Form>
           <div>
             <h1>Todo List</h1>
-            <Link to="/add">Add book</Link>
+          
             <Field
               type="text"
               className="form-control"
