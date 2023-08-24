@@ -16,38 +16,31 @@ const formSubmit = () => (
         town: "",
         location: "",
         phone: "",
-        email: ""
+        email: "",
       }}
-      
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(false);
         console.log(values);
         alert("submit successfully");
       }}
       validationSchema={Yup.object().shape({
-        fullname: Yup.string()
-        .required('name can not empty'),
-        identity: Yup.string()
-        .required('identity card can not empoty'),
+        fullname: Yup.string().required("name can not empty"),
+        identity: Yup.string().required("identity card can not empoty"),
         year: Yup.number()
-        .required('year can not empty')
-        .min(1900,'year more than 1900'),
-        nationality: Yup.string()
-        .required('nationality can not empty'),
-        province: Yup.string()
-        .required('province'),
-        district: Yup.string()
-        .required('district can not empty'),
-        town: Yup.string()
-        .required('town can not empty'),
-        location: Yup.string()
-        .required('location can not empty'),
-        phone: Yup.string()
-        .required('phone can not empty'),
+          .required("year can not empty")
+          .min(1900, "year more than 1900"),
+        nationality: Yup.string().required("nationality can not empty"),
+        province: Yup.string().required("province"),
+        district: Yup.string().required("district can not empty"),
+        town: Yup.string().required("town can not empty"),
+        location: Yup.string().required("location can not empty"),
+        phone: Yup.string().required("phone can not empty"),
         email: Yup.string()
-        .required('email can not empty')
-        .matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-                    , "email is not valid")
+          .required("email can not empty")
+          .matches(
+            /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+            "email is not valid"
+          ),
       })}
     >
       <Form>
@@ -58,7 +51,11 @@ const formSubmit = () => (
           type="text"
           placeholder="full name"
         ></Field>
-        <ErrorMessage name="fullname" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="fullname"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Số chứng minh nhân dân</p>
         <Field
           id="identity"
@@ -66,10 +63,18 @@ const formSubmit = () => (
           type="text"
           placeholder="identity card number"
         ></Field>
-        <ErrorMessage name="identity" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="identity"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Năm sinh</p>
         <Field id="year" name="year" type="text" placeholder="year"></Field>
-        <ErrorMessage name="year" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="year"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <br></br>
         <span>
           Giới tính<input type="radio" id="genderMale" name="gender"></input>
@@ -84,7 +89,11 @@ const formSubmit = () => (
           type="text"
           placeholder="nationality"
         ></Field>
-        <ErrorMessage name="nationality" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="nationality"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Công ty làm việc</p>
         <Field
           id="company"
@@ -92,7 +101,11 @@ const formSubmit = () => (
           type="text"
           placeholder="company"
         ></Field>
-        <ErrorMessage name="company" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="company"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Bộ phận làm việc</p>
         <Field
           id="department"
@@ -100,7 +113,11 @@ const formSubmit = () => (
           type="text"
           placeholder="department"
         ></Field>
-        <ErrorMessage name="department" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="department"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <br></br>
         <span>
           <label for="healthcare">Có thẻ bảo hiểm y tế</label>
@@ -114,7 +131,11 @@ const formSubmit = () => (
           type="text"
           placeholder="province"
         ></Field>
-        <ErrorMessage name="province" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="province"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Quận/Huyện</p>
         <Field
           id="district"
@@ -122,10 +143,18 @@ const formSubmit = () => (
           type="text"
           placeholder="district"
         ></Field>
-        <ErrorMessage name="district" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="district"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Phường/xã</p>
         <Field id="town" name="town" type="text" placeholder="town"></Field>
-        <ErrorMessage name="town" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="town"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Số nhà</p>
         <Field
           id="location"
@@ -133,13 +162,25 @@ const formSubmit = () => (
           type="text"
           placeholder="location"
         ></Field>
-        <ErrorMessage name="location" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="location"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Điện thoại</p>
         <Field id="phone" name="phone" type="text" placeholder="phone"></Field>
-        <ErrorMessage name="phone" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="phone"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Email</p>
         <Field id="email" name="email" type="text" placeholder="email"></Field>
-        <ErrorMessage name="email" component='span' className="form-error text-danger"></ErrorMessage>
+        <ErrorMessage
+          name="email"
+          component="span"
+          className="form-error text-danger"
+        ></ErrorMessage>
         <p>Trong vòng 14 ngày qua</p>
         <Field as="textarea" name="declare" placeholder="declare"></Field>
         <div>
