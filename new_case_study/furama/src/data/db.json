@@ -1,0 +1,28 @@
+{
+    "services":[
+        {   
+            "id":1,
+            "name":"SUPERIOR ROOM FACING LAKE",
+            "area":"Room area: 40.1 m2",
+            "image":"https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Lagoon-Superior-twin-bed-M-1047x563.jpg"
+        },
+        {
+            "id":2,
+            "name":"LAGOON SUPERIOR",
+            "area":"Room area: 40.1 m2",
+            "image":"https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/722781/722781/63984554_XL.jpg?auto=format,compress&fit=crop&crop=entropy&w=300&h=200&q=55"
+        },
+        {
+            "id":3,
+            "name":"DELUXE ROOM FACING THE SEA",
+            "area":"Room area: 43.7 m2",
+            "image":"https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-872x563.jpg"
+        },
+        {
+            "id":4,
+            "name":"DELUXE ROOM FACING GARDEN",
+            "area":"Room area: 40.1 m2",
+            "image":"https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-872x563.jpg"
+        }
+    ]
+}
