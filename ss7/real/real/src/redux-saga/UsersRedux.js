@@ -13,20 +13,9 @@ function* getAllUser(action) {
 
 
 
-function* deleteUser(action) {
-    try {
-        const id = action.payload;
-        console.log(id);
-        yield axios.delete(`http://localhost:8080/users/${id}`);
-        yield put({ type: GET_ALL_USERS });
-    } catch (e) {
-        console.log(e);
-    }
-}
 
 function* usersSaga() {
     yield takeLatest(GET_ALL_USERS, getAllUser);
-    yield takeLatest(DELETE_USERS, deleteUser);
 }
 
 export default usersSaga;
