@@ -5,3 +5,7 @@ const getAllUser = async () => {
   return result.data;
 };
 export default getAllUser;
+
+const deleteUser = async (id) => {
+  await axios.delete(`http://localhost:8080/users/${id}`);
+};

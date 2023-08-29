@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { GET_ALL_USERS } from "../redux/Types";
+import { GET_ALL_USERS,DELETE } from "../redux/Types";
 import { useEffect,useState } from "react";
 
 
@@ -14,7 +14,12 @@ function UserList() {
     });
   }, [dispatch]);
 
-
+  const removeUser = (id) =>{
+    dispatch({
+        type: DELETE,
+        payload: id
+    });
+}
 
   return (
     <div>
@@ -35,6 +40,8 @@ function UserList() {
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.website}</td>
+              <td><button onClick={()=>removeUser(user.id)}>Delete</button>
+</td>
             </tr>
           ))}
         </tbody>

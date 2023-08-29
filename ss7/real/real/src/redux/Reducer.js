@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, DELETE_USERS, GET_ALL_SUCCESS } from "./Types";
+import { GET_ALL_SUCCESS,GET_ALL_USERS ,DELETE_SUCCESS  } from "./Types";
 
 
 const initialState = {
@@ -11,7 +11,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_SUCCESS:
             return { ...state, users: action.payload };
-        case DELETE_USERS:
+        case DELETE_SUCCESS:
             return { ...state, users: action.payload };
         default:
             return state;
