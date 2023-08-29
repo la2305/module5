@@ -1,0 +1,76 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "la",
+      "dob": "23/05/1998",
+      "gender": "nam",
+      "class": "C0323G1",
+      "school": "codegym"
+    },
+    {
+      "id": 2,
+      "name": "li",
+      "dob": "23/05/2000",
+      "gender": "nam",
+      "class": "C0323G1",
+      "school": "codegym"
+    },
+    {
+      "name": "sdafsdf",
+      "dob": "2023-08-01",
+      "gender": "dsafsdf",
+      "class": "sdfsdaf",
+      "school": "dsfsadfsdaf",
+      "id": 3
+    },
+    {
+      "name": "sdfdsafdsf",
+      "dob": "2023-08-03",
+      "gender": "sdfsadf",
+      "class": "sdfsdaf",
+      "school": "dsfsdaf",
+      "id": 7
+    },
+    {
+      "name": "sdfsdfdsfsadaaaaaaaaaaaaaaaa",
+      "dob": "2023-08-08",
+      "gender": "0",
+      "class": "ádfsdaf",
+      "school": "dsfsdaf",
+      "id": 8
+    },
+    {
+      "name": "dsfsdfs",
+      "dob": "2023-08-01",
+      "gender": "ádfsdf",
+      "class": "sdfsdf",
+      "school": "sdfdsaf",
+      "id": 9
+    },
+    {
+      "name": "aaaaaaaaaaa",
+      "dob": "2023-08-09",
+      "gender": "sâfdsfsd",
+      "class": "aaaa",
+      "school": "â",
+      "id": 10
+    },
+    {
+      "name": "sadfsdf",
+      "dob": "2023-08-02",
+      "gender": "sdafsafd",
+      "class": "sdfsdaf",
+      "school": "",
+      "id": 11
+    },
+    {
+      "name": "sadfsadf",
+      "dob": "2023-08-17",
+      "gender": "sdfsdf",
+      "class": "sdfsad",
+      "school": "fsadf",
+      "id": 12
+    }
+  ]
+}
