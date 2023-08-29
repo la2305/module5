@@ -5,14 +5,14 @@ import { useEffect,useState } from "react";
 
 
 function UserList() {
-  const users = useSelector(state => state.users);
-
+  const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({
       type: GET_ALL_USERS,
     });
-  }, []);
+  }, [dispatch]);
 
 
 
@@ -29,7 +29,7 @@ function UserList() {
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
+          {users.map((user) => (
             <tr key={user.id}>
               <td>{user.id}</td>
               <td>{user.username}</td>

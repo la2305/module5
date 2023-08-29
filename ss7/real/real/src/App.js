@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+
 import { Provider } from 'react-redux';
 import UserList from './components/UsersList';
 import store from './redux/Store';
