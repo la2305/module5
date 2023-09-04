@@ -1,5 +1,20 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import * as ContractService from "../../services/ContractService";
+import { render } from "@testing-library/react";
+import { Link } from "react-router-dom";
 const ContractList = () => {
+  const [contracts, setContracts] = useState([]);
+
+  const loadContract = async () => {
+    const data = await ContractService.getContractList();
+    setContracts(data);
+  };
+
+  useEffect(() => {
+    loadContract();
+  }, []);
+
   return (
     <>
       {/* list */}
@@ -8,7 +23,7 @@ const ContractList = () => {
           <div className="table-wrapper">
             <div className="table-title">
               <div className="row">
-                <div className="col-sm-8">
+                <div className="col-sm-7">
                   <h2>Customer list</h2>
                 </div>
                 <div className="col-sm-4">
@@ -19,6 +34,9 @@ const ContractList = () => {
                       placeholder="Search"
                     />
                   </div>
+                </div>
+                <div className="col-sm-1">
+                  <Link to="/contract/create"><button className="btn btn-primary">Add</button></Link>
                 </div>
               </div>
             </div>
@@ -34,14 +52,18 @@ const ContractList = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Thomas Hardy</td>
-                  <td>24/05/1998</td>
-                  <td>Male</td>
-                  <td>049096000697</td>
-                  <td>03382101411</td>
-                </tr>
+                {contracts.map((contract,index) => {
+                  return (
+                    <tr key={`p_${index}`}>
+                      <td>{contract.id}</td>
+                      <td>{contract.code}</td>
+                      <td>{contract.dateStart}</td>
+                      <td>{contract.dateEnd}</td>
+                      <td>{contract.depositMoney}</td>
+                      <td>{contract.totalMoney}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             <div className="clearfix">

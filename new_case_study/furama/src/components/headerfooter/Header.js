@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
@@ -46,15 +47,9 @@ const Header = () => {
                       Pages
                     </a>
                     <div className="dropdown-menu bg-light rounded-0 m-0">
-                      <a href="feature.html" className="dropdown-item">
-                        Service
-                      </a>
-                      <a href="blog.html" className="dropdown-item">
-                        Contract
-                      </a>
-                      <a href="testimonial.html" className="dropdown-item">
-                        Customer
-                      </a>
+                        <Link to="/" className="dropdown-item">Service</Link>
+                        <Link to="/contract/list" className="dropdown-item">Contract</Link>                     
+                        <Link to="/customer/list" className="dropdown-item">Customer</Link>                     
                       <a href="404.html" className="dropdown-item">
                         404 Page
                       </a>

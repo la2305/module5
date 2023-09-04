@@ -14,6 +14,8 @@ import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Style.css";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
@@ -21,7 +23,7 @@ function App() {
       <Routes>
           <Route path="/customer/list"  element={<CustomerList></CustomerList>}></Route>
           <Route path="/customer/create"  element={<CustomerCreate></CustomerCreate>}></Route>
-          <Route path="/customer/edit"  element={<CustomerEdit></CustomerEdit>}></Route>
+          <Route path="/customer/edit/:id"  element={<CustomerEdit></CustomerEdit>}></Route>
 
           <Route path="/"  element={<ServiceList></ServiceList>}></Route>
           <Route path="/service/create"  element={<ServiceCreate></ServiceCreate>}></Route>
@@ -31,6 +33,7 @@ function App() {
           <Route path="/contract/create"  element={<ContractCreate></ContractCreate>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </>
   );
 }

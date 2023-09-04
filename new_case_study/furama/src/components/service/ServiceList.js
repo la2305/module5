@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import * as ServiceService from "../../services/ServiceService";
+import { Link } from "react-router-dom";
 
 const ServiceList = () => {
   const [services, setServices] = useState([]);
@@ -13,6 +14,11 @@ const ServiceList = () => {
   useEffect(() => {
     loadService();
   }, []);
+
+  const deleteServiceById = async (id) => {
+    await ServiceService.deleteService(id);
+    loadService();
+  };
 
   return (
     <>
@@ -92,11 +98,10 @@ const ServiceList = () => {
         </div>
         {/* Carousel End */}
       </>
-
       {/* service */}
-
       <div className="container">
         <div className="row">
+        <Link to="/service/create"><button className="btn btn-primary">CreateService</button></Link>
           {services.map((service, index) => {
             return (
               <div className="col-md-4 mt-4" key={`p_${index}`}>
@@ -109,9 +114,18 @@ const ServiceList = () => {
                   <div className="card-body">
                     <h5 className="card-title">{service.name}</h5>
                     <p className="card-text">{service.area}</p>
-                    <a href="#" className="btn btn-primary">
-                      Detail
-                    </a>
+                    <div className="">
+                      <button href="#" className="btn btn-primary">
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => deleteServiceById(`${service.id}`)}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -119,7 +133,6 @@ const ServiceList = () => {
           })}
         </div>
       </div>
-
       {/* service */}
     </>
   );

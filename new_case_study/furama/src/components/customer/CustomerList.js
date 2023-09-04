@@ -1,120 +1,199 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import * as CustomerService from "../../services/CustomerService";
+import { Link, useNavigate } from "react-router-dom";
+import ModalDelete from "./ModalDelete";
+
 const CustomerList = () => {
-    return(
-        <>
-  {/* list */}
-  <div className="container">
-    <div className="table-responsive">
-      <div className="table-wrapper">
-        <div className="table-title">
-          <div className="row">
-            <div className="col-sm-8">
-              <h2>Customer list</h2>
-            </div>
-            <div className="col-sm-4">
-              <div className="search-box">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search"
-                />
+  const [customers, setCustomers] = useState([]);
+  const navigate = useNavigate();
+
+  //search
+  const [search, setSearch] = useState("");
+
+  //phân trang
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState();
+
+  const loadCustomer = async () => {
+    const result = await CustomerService.getCustomerList(page,search);
+    setTotalPage(Math.ceil(result.headers["x-total-count"] / 5));
+    setCustomers(result.data);
+  };
+
+  useEffect(() => {
+    loadCustomer();
+  }, [page,search]);
+
+  const nextPage = () => {
+    if (page < totalPage) {
+      setPage((prev) => prev + 1);
+    }
+  };
+  const previosPage = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+
+  // delete
+  const [modal, SetModal] = useState({
+    show: false,
+    info: {},
+  });
+  const deleteConfirm = async (id) => {
+    await CustomerService.deleteCustomer(id);
+    hideModalDelete();
+    loadCustomer();
+  };
+  const showModalDelete = (customer) => {
+    SetModal({
+      show: true,
+      info: customer,
+    });
+  };
+  const hideModalDelete = () => {
+    SetModal({
+      show: false,
+      info: {},
+    });
+  };
+
+  // search
+  const searchName = () => {
+    const search = document.getElementById("search").value;
+    setSearch(search);
+    setPage(1);
+  }
+
+
+
+  return (
+    <>
+      {/* list */}
+      <div className="container">
+        <div className="table-responsive">
+          <div className="table-wrapper">
+            <div className="table-title">
+              <div className="row">
+                <div className="col-sm-7">
+                  <h2>Customer list</h2>
+                </div>
+                <div className="col-sm-4">
+                  <div className="search-box-inline">
+                    <input
+                      type="search"
+                      placeholder="Search"
+                      className="form-control mr-sm-2"
+                      id="search"
+                    />
+                    <button class="btn btn-primary" type="button" onClick={()=>searchName()}>Search</button>
+                  </div>
+                </div>
+                <div className="col-sm-1">
+                  <Link to="/customer/create">
+                    <button type="button" className="btn btn-primary">
+                      Create
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
+            <table className="table table-striped table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Date Of Birth</th>
+                  <th>Gender</th>
+                  <th>Identity Card Number</th>
+                  <th>Number Phone</th>
+                  <th>Customer Type</th>
+                  <th>Location</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {customers.map((customer, index) => {
+                  return (
+                    <tr key={`p_${index}`}>
+                      <td>{index + 1}</td>
+                      <td>{customer.name}</td>
+                      <td>{customer.dob}</td>
+                      <td>{customer.gender}</td>
+                      <td>{customer.identity}</td>
+                      <td>{customer.phone}</td>
+                      <td>{customer.customerType.name}</td>
+                      <td>{customer.location}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => {
+                            navigate(`/customer/edit/${customer.id}`);
+                          }}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          onClick={() => showModalDelete(customer)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            {/* //phantrang */}
+            <div className="d-flex justify-content-center">
+              <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                  <li className="page-item">
+                    <button
+                      className="page-link"
+                      onClick={() => previosPage()}
+                      style={{ color: "black" }}
+                    >
+                      Previous
+                    </button>
+                  </li>
+                  <li className="page-item">
+                    <span
+                      className="page-link"
+                      href="#"
+                      style={{ color: "black" }}
+                    >
+                      {page}/{totalPage}
+                    </span>
+                  </li>
+                  <li className="page-item">
+                    <button
+                      className="page-link"
+                      onClick={() => nextPage()}
+                      href="#"
+                      style={{ color: "black" }}
+                    >
+                      Next
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            {/* // */}
           </div>
-        </div>
-        <table className="table table-striped table-hover table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Date Of Birth</th>
-              <th>Gender</th>
-              <th>Identity Card Number</th>
-              <th>Number Phone</th>
-              <th>Email</th>
-              <th>Customer Type</th>
-              <th>Location</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Thomas Hardy</td>
-              <td>24/05/1998</td>
-              <td>Male</td>
-              <td>049096000697</td>
-              <td>03382101411</td>
-              <td>lequangphuoc2305@gmail.com</td>
-              <td>Gold</td>
-              <td>536/17A Điện Biên Phủ, Đà Nẵng,</td>
-              <td>
-                <a href="#" className="view" title="View" data-toggle="tooltip">
-                <i class="fa-solid fa-circle-info fa-2xl"></i>
-                </a>
-                <a href="#" className="edit" title="Edit" data-toggle="tooltip">
-                <i className="fas fa-pen-to-square fa-2x"  style={{ color: "yellow" }}/>
-                </a>
-                <a
-                  href="#"
-                  className="delete"
-                  title="Delete"
-                  data-toggle="tooltip"
-                >
-                  <i class="fa-solid fa-trash fa-2xl" style={{ color: "red" }}></i>
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div className="clearfix">
-          <div className="hint-text">
-            Showing <b>5</b> out of <b>25</b> entries
-          </div>
-          <ul className="pagination">
-            <li className="page-item disabled">
-              <a href="#">
-                <i className="fa fa-angle-double-left" />
-              </a>
-            </li>
-            <li className="page-item">
-              <a href="#" className="page-link">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a href="#" className="page-link">
-                2
-              </a>
-            </li>
-            <li className="page-item active">
-              <a href="#" className="page-link">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a href="#" className="page-link">
-                4
-              </a>
-            </li>
-            <li className="page-item">
-              <a href="#" className="page-link">
-                5
-              </a>
-            </li>
-            <li className="page-item">
-              <a href="#" className="page-link">
-                <i className="fa fa-angle-double-right" />
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
-    </div>
-  </div>
-  {/* list */}
-</>
-
-    );
+      {/* list */}
+      <ModalDelete showModal={modal} hideModal={hideModalDelete} confirm={deleteConfirm} />
+    </>
+  );
 };
-export default CustomerList
+export default CustomerList;
