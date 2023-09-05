@@ -1,0 +1,106 @@
+{
+  "type": [
+    {
+      "id": 1,
+      "name": "span"
+    },
+    {
+      "id": 2,
+      "name": "shirt"
+    },
+    {
+      "id": 3,
+      "name": "hat"
+    }
+  ],
+  "clothing": [
+    {
+      "id": 1,
+      "code": 123121331231111100,
+      "name": "Quan dai",
+      "date": "2023-09-22",
+      "quantity": 5,
+      "type": {
+        "id": 1,
+        "name": "span"
+      }
+    },
+    {
+      "id": 2,
+      "code": 124,
+      "name": "Quan jean",
+      "date": "24/05/2023",
+      "quantity": 5,
+      "type": {
+        "id": 1,
+        "name": "span"
+      }
+    },
+    {
+      "id": 3,
+      "code": 125,
+      "name": "Ao ba lo",
+      "date": "24/05/2023",
+      "quantity": 5,
+      "type": {
+        "id": 2,
+        "name": "shirt"
+      }
+    },
+    {
+      "id": 4,
+      "code": 126,
+      "name": "Ao co co",
+      "date": "24/05/2023",
+      "quantity": 5,
+      "type": {
+        "id": 2,
+        "name": "shirt"
+      }
+    },
+    {
+      "id": 5,
+      "code": 127,
+      "name": "mu tai beo",
+      "date": "24/05/2023",
+      "quantity": 5,
+      "type": {
+        "id": 3,
+        "name": "hat"
+      }
+    },
+    {
+      "code": 123213,
+      "name": "Lê Quang Phước",
+      "date": "2023-09-13",
+      "quantity": 444,
+      "type": {
+        "id": 2,
+        "name": "shirt"
+      },
+      "id": 6
+    },
+    {
+      "code": 123123123123123120,
+      "name": "khuyenmai10%",
+      "date": "2023-09-07",
+      "quantity": 1000000000333333,
+      "type": {
+        "id": 1,
+        "name": "span"
+      },
+      "id": 12
+    },
+    {
+      "code": 55,
+      "name": "Lê Quang Phước",
+      "date": "2023-09-13",
+      "quantity": 100333,
+      "type": {
+        "id": 3,
+        "name": "hat"
+      },
+      "id": 13
+    }
+  ]
+}
